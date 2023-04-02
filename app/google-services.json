@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "779261260883",
+    "project_id": "twitter-bot-6f440",
+    "storage_bucket": "twitter-bot-6f440.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779261260883:android:63386637605ec3760c02a6",
+        "android_client_info": {
+          "package_name": "com.rent.scouto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779261260883-k891khum66283cm1d5i6ochhu9jkcnec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rent.scouto",
+            "certificate_hash": "87bcc0da2b6a2372dde2ef5395a5e8ba0582980b"
+          }
+        },
+        {
+          "client_id": "779261260883-ific0ettqhi5stpnohl2megh5nhpe5b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0FipdqL_mBQik_rlB0TPfNCMA-NXPx9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779261260883-ific0ettqhi5stpnohl2megh5nhpe5b1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

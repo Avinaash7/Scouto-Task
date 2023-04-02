@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#484848"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LoginFragment">
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:layout_margin="5dp"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionDone"
+                android:id="@+id/emailidtv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email Address" />
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_password_24"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:layout_margin="5dp"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:id="@+id/passwordtv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password" />
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:text="Login"
+            android:id="@+id/login_btn"
+            app:cornerRadius="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:text="Sign in Using"
+            android:textColor="@color/smokyWhite"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:id="@+id/googlebtnx"
+                android:src="@drawable/google"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

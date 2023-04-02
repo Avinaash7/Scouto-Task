@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    app:cardCornerRadius="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="1dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/carimageiv"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/ic_baseline_person_24" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="0dp">
+
+                <TextView
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:id="@+id/idTVCourseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Car Make"
+                     />
+
+                <TextView
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:id="@+id/idTVCourseDuration"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Car Model" />
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:text="Add Image"
+                    app:cornerRadius="10dp"
+                    android:backgroundTint="#01579B"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:text="Delete"
+                    android:id="@+id/delete_btn"
+                    android:backgroundTint="#ff0033"
+                    app:cornerRadius="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
