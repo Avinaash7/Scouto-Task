@@ -13,16 +13,16 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {CarModel.class}, version = 1)
+@Database(entities = {CarModel.class}, version = 16)
 public abstract class CarDatabase extends RoomDatabase {
 
     private static CarDatabase instance;
 
     // below line is to create
     // abstract variable for dao.
-    public abstract Dao Dao();
+    public abstract Dao getDao();
 
-    public static synchronized CarDatabase getInstance(Context context) {
+    public static CarDatabase getInstance(Context context) {
         // below line is to check if
         // the instance is null or not.
         if (instance == null) {
@@ -31,8 +31,8 @@ public abstract class CarDatabase extends RoomDatabase {
             instance =
                     Room.databaseBuilder(context.getApplicationContext(),
                                     CarDatabase.class, "car_database")
+                            .allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
-                            .addCallback(roomCallback)
                             .build();
         }
         return instance;
@@ -48,7 +48,7 @@ public abstract class CarDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         PopulateDbAsyncTask(CarDatabase instance) {
-            Dao dao = instance.Dao();
+            Dao dao = instance.getDao();
         }
         @Override
         protected Void doInBackground(Void... voids) {

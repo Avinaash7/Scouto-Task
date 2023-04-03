@@ -1,31 +1,45 @@
 package com.rent.scouto;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "car_table")
-public class CarModel {
+public class CarModel implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
     String Make_Name;
     String Model_Name;
+    String Image_Path;
 
-    public CarModel(String make_Name, String model_Name) {
+    public CarModel(String make_Name, String model_Name, String image_Path) {
         Make_Name = make_Name;
         Model_Name = model_Name;
+        Image_Path = image_Path;
     }
+
+    public String getImage_Path() {
+        return Image_Path;
+    }
+
+    public void setImage_Path(String image_Path) {
+        Image_Path = image_Path;
+    }
+
 
     public CarModel(){
 
     }
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

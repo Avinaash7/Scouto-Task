@@ -47,7 +47,7 @@ import java.util.Objects;
 public class AddCarBottomSheetFragment extends BottomSheetDialogFragment {
 
     public interface onSomeEventListener {
-        public void someEvent(String _carMake,String _carModel);
+        public void someEvent(String _carMake,String _carModel,String imagepath);
     }
 
     onSomeEventListener someEventListener;
@@ -229,7 +229,7 @@ public class AddCarBottomSheetFragment extends BottomSheetDialogFragment {
     }
 
     private void sendData(String carName, String carModel) {
-        someEventListener.someEvent(carName,carModel);
+        someEventListener.someEvent(carName,carModel,"");
         //saveCourse(courseName, courseDesc);
         dismiss();
     }

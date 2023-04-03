@@ -13,12 +13,12 @@ public interface Dao {
     // below method is use to
     // add data to database.
     @Insert
-    void insert(CarModel model);
+    long insert(CarModel model);
 
     // below method is use to update
     // the data in our database.
-    @Update
-    void update(CarModel model);
+    @Query("UPDATE car_table SET Image_Path=:path WHERE id=:id")
+    void update(String path,long id);
 
     // below line is use to delete a
     // specific course in our database.
@@ -26,7 +26,7 @@ public interface Dao {
     void delete(CarModel model);
 
     @Query("DELETE FROM car_table WHERE id=:id")
-    void deleteById(int id);
+    void deleteById(long id);
 
     // on below line we are making query to
     // delete all courses from our database.
@@ -37,5 +37,5 @@ public interface Dao {
     // in this we are ordering our courses in ascending order
     // with our course name.
     @Query("SELECT * FROM car_table ORDER BY Make_Name ASC")
-    LiveData<List<CarModel>> getAllCourses();
+    List<CarModel> getAllCourses();
 }
