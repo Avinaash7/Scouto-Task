@@ -1,8 +1,12 @@
 package com.rent.scouto;
 
+import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
+import static android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
@@ -277,10 +282,17 @@ public class MainActivity extends AppCompatActivity implements AddCarBottomSheet
             public void onClick(DialogInterface dialog, int item) {
                 if (options[item].equals("Take Photo"))
                 {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(Environment.getExternalStorageDirectory(), "tempx.jpg");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intent, 1);
+//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    File f = new File(Environment.getExternalStorageDirectory(), "tempx.jpg");
+//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+//                    startActivityForResult(intent, 1);
+
+                    Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    camera.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFile(MainActivity.this));
+                    camera.addFlags(FLAG_GRANT_READ_URI_PERMISSION);
+                    camera.addFlags(FLAG_GRANT_WRITE_URI_PERMISSION);
+                    startActivityForResult(camera, 1);
+
                 }
                 else if (options[item].equals("Choose from Gallery"))
                 {
@@ -295,16 +307,23 @@ public class MainActivity extends AppCompatActivity implements AddCarBottomSheet
         builder.show();
     }
 
+    public static Uri getPhotoFile(Context context) {
+        File file = new File(context.getExternalCacheDir(), "camerax.jpg");
+        return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("Welcome", String.valueOf(resultCode));
         if (resultCode == RESULT_OK) {
+            Log.i("Welcomeresult","1");
             if (requestCode == 1) {
                 Log.i("Welcome","1");
-                File f = new File(Environment.getExternalStorageDirectory().toString());
+                File f = new File(getExternalCacheDir().toString());
                 for (File temp : f.listFiles()) {
-                    if (temp.getName().equals("tempx.jpg")) {
+                    Log.i("Welcometemp",temp.getName());
+                    if (temp.getName().equals("camerax.jpg")) {
                         f = temp;
                         break;
                     }
@@ -322,21 +341,20 @@ public class MainActivity extends AppCompatActivity implements AddCarBottomSheet
                     cardao.update(x,globalid);
 
 
-                    String path = android.os.Environment
-                            .getExternalStorageDirectory()
-                            + File.separator
-                            + "Phoenix" + File.separator + "default";
-                    f.delete();
-                    OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    try {
-                        outFile = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                        outFile.flush();
-                        outFile.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+//                    String path = getExternalCacheDir()
+//                            + File.separator
+//                            + "Phoenix" + File.separator + "default";
+//                    f.delete();
+//                    OutputStream outFile = null;
+//                    File file = new File(path, String.valueOf("camerax" + ".jpg"));
+//                    try {
+//                        outFile = new FileOutputStream(file);
+//                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
+//                        outFile.flush();
+//                        outFile.close();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

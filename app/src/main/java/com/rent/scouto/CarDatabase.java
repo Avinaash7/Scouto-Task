@@ -18,16 +18,12 @@ public abstract class CarDatabase extends RoomDatabase {
 
     private static CarDatabase instance;
 
-    // below line is to create
-    // abstract variable for dao.
     public abstract Dao getDao();
 
     public static CarDatabase getInstance(Context context) {
-        // below line is to check if
-        // the instance is null or not.
+
         if (instance == null) {
-            // if the instance is null we
-            // are creating a new instance
+
             instance =
                     Room.databaseBuilder(context.getApplicationContext(),
                                     CarDatabase.class, "car_database")
